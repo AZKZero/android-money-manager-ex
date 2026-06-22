@@ -72,6 +72,7 @@ public class SearchParameters {
     public SearchParameters() {
         // explicitly set the null value
         this.status = STRING_NULL_VALUE;
+        this.color = -1;
     }
 
 

@@ -97,7 +97,7 @@ public class SearchParametersFragment
 
     private Spinner spinAccount, spinStatus, spinCurrency;
     private EditText txtNotes;
-    private TextView txtSelectCategory;
+    private TextView txtSelectCategory, txtSelectTag;
     private CheckBox cbxWithdrawal, cbxTransfer;
     private CheckBox cbxSearchSubCategory;
     // arrays list account name and account id
@@ -231,7 +231,7 @@ public class SearchParametersFragment
         });
 
         //tag
-        viewHolder.txtSelectTag.setOnClickListener(new OnClickListener() {
+        txtSelectTag.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), TagActivity.class);
@@ -669,9 +669,9 @@ public class SearchParametersFragment
             searchParameters.payeeName = null;
         }
         // tag
-        if (viewHolder.txtSelectTag.getTag() != null) {
-            searchParameters.tagId = Long.parseLong(viewHolder.txtSelectTag.getTag().toString());
-            searchParameters.tagName = viewHolder.txtSelectTag.getText().toString();
+        if (txtSelectTag.getTag() != null) {
+            searchParameters.tagId = Long.parseLong(txtSelectTag.getTag().toString());
+            searchParameters.tagName = txtSelectTag.getText().toString();
         } else {
             searchParameters.tagId = null;
             searchParameters.tagName = null;
@@ -786,6 +786,9 @@ public class SearchParametersFragment
         // Payee
         viewHolder.txtSelectPayee.setTag(searchParameters.payeeId);
         viewHolder.txtSelectPayee.setText(searchParameters.payeeName);
+        // Tag
+        txtSelectTag.setTag(searchParameters.tagId);
+        txtSelectTag.setText(searchParameters.tagName);
         // Category
         displayCategory(searchParameters.category);
         cbxSearchSubCategory.setChecked(searchParameters.searchSubCategory);
@@ -817,6 +820,7 @@ public class SearchParametersFragment
         cbxWithdrawal = view.findViewById(R.id.checkBoxWithdrawal);
 
         txtSelectCategory = view.findViewById(R.id.textViewSelectCategory);
+        txtSelectTag = view.findViewById(R.id.textViewSelectTag);
         cbxSearchSubCategory = view.findViewById(R.id.checkBoxSearchSubCategory);
 
         spinStatus = view.findViewById(R.id.spinnerStatus);
