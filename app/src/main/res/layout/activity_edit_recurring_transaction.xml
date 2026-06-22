@@ -636,11 +636,10 @@
                 </com.google.android.material.textfield.TextInputLayout >
             </LinearLayout>
 
-            <!-- Add a section for Color -->
+            <!-- Color Selection -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:minHeight="@dimen/mmx_avatar_item_height"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/mmx_avatar_item_height"
                 android:orientation="horizontal">
 
                 <com.mikepenz.iconics.view.IconicsImageView
@@ -653,22 +652,18 @@
                     android:layout_marginEnd="@dimen/mmx_side_icon_margin"
                     android:layout_gravity="center_vertical"/>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false" >
-                    <com.money.manager.ex.view.RobotoEditText
-                        android:id="@+id/colorView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="top|start"
-                        android:scrollHorizontally="false"
-                        android:textCursorDrawable="@null"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        />
-                </com.google.android.material.textfield.TextInputLayout >
+                <com.money.manager.ex.view.RobotoTextView
+                    android:id="@+id/colorView"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:hint="@string/empty_color_message"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true" />
             </LinearLayout>
 
 

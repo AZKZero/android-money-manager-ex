@@ -312,9 +312,17 @@ public class AllDataAdapter
 
         // color
         int color = cursor.getInt(cursor.getColumnIndexOrThrow(COLOR));
-        if (color > 0 ) {
-            InfoService infoService = new InfoService(context);
-            holder.viewColor.setBackgroundColor(infoService.getColorNumberFromInfoKey(color));
+        if (color != -1) {
+            int actualColor;
+            if (color >= 1 && color <= 7) {
+                // legacy index
+                InfoService infoService = new InfoService(context);
+                actualColor = infoService.getColorNumberFromInfoKey(color);
+            } else {
+                // actual color value
+                actualColor = color;
+            }
+            holder.viewColor.setBackgroundColor(actualColor);
             holder.viewColor.setVisibility(View.VISIBLE);
         } else {
             holder.viewColor.setVisibility(View.GONE);
