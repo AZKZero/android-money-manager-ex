@@ -19,7 +19,7 @@
     <!-- Light Theme -->
 
     <!-- base for the base of the light theme. -->
-    <style name="_App_Light_DarkActionBar" parent="@style/Theme.AppCompat.Light.NoActionBar">
+    <style name="_App_Light_DarkActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!--<item name="android:icon">@color/md_icons</item>-->
         <!--<item name="android:divider">@color/md_divider</item>-->
         <item name="android:dropDownSpinnerStyle">@style/Money.Spinner.Style</item>
@@ -54,14 +54,15 @@
         <item name="toolbarAppPopupTheme">@style/ThemeOverlay.AppCompat.Light</item>
 
         <!-- Colors -->
-        <item name="theme_background_color">@android:color/transparent</item>
-        <item name="theme_drawer_background_color">@color/holo_light_darkaction_money_background</item>
+        <item name="android:windowBackground">@color/faint_cyan_background</item>
+        <item name="theme_background_color">@color/faint_cyan_background</item>
+        <item name="theme_drawer_background_color">@color/faint_cyan_background</item>
         <item name="cardViewBackgroundColor">@android:color/white</item>
         <item name="holo_blue_color_theme">@color/holo_blue_dark</item>
         <item name="holo_green_color_theme">@color/holo_green_dark</item>
         <item name="holo_red_color_theme">@color/holo_red_dark</item>
         <item name="row_dark_theme">@android:color/transparent</item>
-        <item name="row_light_theme">@color/holo_light_row_light</item>
+        <item name="row_light_theme">@color/sage_row_light</item>
 
         <!-- buttons -->
         <item name="button_background_inactive">@color/button_background_inactive_light</item>
@@ -70,7 +71,7 @@
         <!-- Charts -->
         <item name="chartTextColor">@color/md_primary_text</item>
         <!-- other -->
-        <item name="color_list_header">@color/material_green_100</item>
+        <item name="color_list_header">@color/sage_header_light</item>
         <!-- toolbar -->
         <!--<item name="toolbar_spinner_item_text_color">@color/material_grey_900</item>-->
 
@@ -131,8 +132,8 @@
         <item name="headerCaptionTextViewStyle">@style/Money.TextView.Header.Caption</item>
 
         <!-- calculator -->
-        <item name="calculator_button_background">@color/material_light_green_100</item>
-        <item name="calculator_button_operator_background">@color/material_light_green_300</item>
+        <item name="calculator_button_background">@color/md_primary_light</item>
+        <item name="calculator_button_operator_background">@color/md_primary</item>
 
         <!-- spinner -->
         <!--<item name="android:spinnerStyle">@style/Money.Spinner.Style</item>-->

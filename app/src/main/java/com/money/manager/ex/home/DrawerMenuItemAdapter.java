@@ -62,10 +62,10 @@ public class DrawerMenuItemAdapter
             holder.viewDivider.setVisibility(item.hasDivider() ? View.VISIBLE : View.GONE);
 
             if (item.getIcon() != null) {
-                holder.imageViewIcon.setBackgroundResource(item.getIcon());
+                holder.imageViewIcon.setImageResource(item.getIcon());
             }
             if (item.getIconDrawable() != null) {
-                holder.imageViewIcon.setBackground(item.getIconDrawable());
+                holder.imageViewIcon.setImageDrawable(item.getIconDrawable());
             }
         }
 		

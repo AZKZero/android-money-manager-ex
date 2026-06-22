@@ -25,7 +25,7 @@ import android.widget.BaseExpandableListAdapter;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.money.manager.ex.R;
-import com.shamanland.fonticon.FontIconView;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -80,10 +80,10 @@ public class DrawerMenuGroupAdapter
             holder.textViewItem.setText(item.getText());
             holder.viewDivider.setVisibility(item.hasDivider() ? View.VISIBLE : View.GONE);
             if (item.getIcon() != null) {
-                holder.imageViewIcon.setBackgroundResource(item.getIcon());
+                holder.imageViewIcon.setImageResource(item.getIcon());
             }
             if (item.getIconDrawable() != null) {
-                holder.imageViewIcon.setBackground(item.getIconDrawable());
+                holder.imageViewIcon.setImageDrawable(item.getIconDrawable());
             }
         }
 
@@ -143,21 +143,21 @@ public class DrawerMenuGroupAdapter
             holder.textViewItem.setText(item.getText());
             holder.viewDivider.setVisibility(item.hasDivider() ? View.VISIBLE : View.GONE);
             if (item.getIcon() != null) {
-                holder.imageViewIcon.setBackgroundResource(item.getIcon());
+                holder.imageViewIcon.setImageResource(item.getIcon());
             }
             if (item.getIconDrawable() != null) {
-                holder.imageViewIcon.setBackground(item.getIconDrawable());
+                holder.imageViewIcon.setImageDrawable(item.getIconDrawable());
             }
         }
 
         // Show/hide chevron
-        FontIconView chevronView = convertView.findViewById(R.id.caretView);
+        ImageView chevronView = convertView.findViewById(R.id.caretView);
         if (getChildrenCount(groupPosition) > 0) {
             if (isExpanded) {
                 // the group is not expanded and has children.
-                chevronView.setText(mContext.getString(R.string.ic_chevron_down));
+                chevronView.setImageResource(R.drawable.ic_chevron_down_24dp);
             } else {
-                chevronView.setText(mContext.getString(R.string.ic_chevron_right));
+                chevronView.setImageResource(R.drawable.ic_chevron_right_24dp);
             }
 
             chevronView.setVisibility(View.VISIBLE);

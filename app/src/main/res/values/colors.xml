@@ -71,14 +71,14 @@
     <color name="theme_chart_labels_color">#CCCCCC</color>
 
     <!-- Material Design -->
-    <!--<color name="md_primary">@color/material_teal_500</color>-->
-    <color name="md_primary">@color/material_green_700</color>
-    <!--<color name="md_primary_dark">@color/material_teal_700</color>-->
-    <color name="md_primary_dark">@color/material_green_900</color>
-    <!--<color name="md_primary_light">@color/material_teal_100</color>-->
-    <color name="md_primary_light">@color/material_green_300</color>
-    <!--<color name="md_accent">@color/material_green_500</color>-->
-    <color name="md_accent">@color/material_light_green_500</color>
+    <color name="md_primary">#8A9A5B</color> <!-- Sage Green -->
+    <color name="md_primary_dark">#5D6A3E</color>
+    <color name="md_primary_light">#B2BD95</color>
+    <color name="md_accent">#0097A7</color> <!-- Cyan 700 for accent -->
+
+    <color name="faint_cyan_background">#F1FEFF</color>
+    <color name="sage_row_light">#E9F9FA</color>
+    <color name="sage_header_light">#DCE7C5</color>
     <!--<color name="md_primary_text">@color/material_grey_900</color>-->
 
     <color name="md_primary_text">@color/material_black</color>

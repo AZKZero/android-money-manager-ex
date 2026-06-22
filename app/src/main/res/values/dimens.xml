@@ -75,7 +75,7 @@ https://developer.android.com/guide/practices/screens_support.html#qualifiers
     <dimen name="mmx_activity_vertical_margin">16dp</dimen>
 
     <!-- font icons sizes -->
-    <dimen name="fonticon_drawer">30sp</dimen>
+    <dimen name="fonticon_drawer">20sp</dimen>
     <dimen name="fonticon_textview">24sp</dimen>
 
     <!-- list items -->
