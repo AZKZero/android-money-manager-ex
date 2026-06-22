@@ -115,6 +115,10 @@
 
     <style name="Money.EditText" parent="Widget.AppCompat.EditText"/>
 
+    <style name="Money.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="boxBackgroundColor">@android:color/transparent</item>
+    </style>
+
     <style name="EditEventCustomActionButton" parent="android:style/Widget.Holo.Light.ActionButton">
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_width">0dp</item>
