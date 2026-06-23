@@ -19,6 +19,8 @@ package com.money.manager.ex.search;
 
 import org.parceler.Parcel;
 
+import com.money.manager.ex.utils.MmxDate;
+
 import java.util.Date;
 
 import info.javaperformance.money.Money;
@@ -72,6 +74,12 @@ public class SearchParameters {
     public SearchParameters() {
         // explicitly set the null value
         this.status = STRING_NULL_VALUE;
+        this.color = -1;
+
+        // default date selection to be start and end of current month
+        MmxDate date = new MmxDate();
+        this.dateFrom = date.firstDayOfMonth().toDate();
+        this.dateTo = date.lastDayOfMonth().toDate();
     }
 
 

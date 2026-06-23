@@ -180,12 +180,12 @@
 
             <com.money.manager.ex.view.RobotoTextView
                 android:id="@+id/textViewTransactionAccountName"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|end"
                 android:ellipsize="end"
                 android:gravity="center_vertical|end"
-                android:singleLine="true"
+                android:maxLines="2"
                 android:textSize="@dimen/mmx_text_view_size_micro"
                 android:textStyle="italic"
                 android:visibility="gone"
@@ -201,12 +201,12 @@
 
             <com.money.manager.ex.view.RobotoTextView
                 android:id="@+id/textViewStatus"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|end"
                 android:ellipsize="end"
                 android:gravity="center_vertical|end"
-                android:singleLine="true"
+                android:maxLines="2"
                 android:textSize="@dimen/mmx_text_view_size_micro"
                 android:textStyle="italic"
                 app:typeface="roboto_condensed_italic" />

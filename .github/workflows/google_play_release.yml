@@ -10,6 +10,6 @@ jobs:
         with:
           serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT_JSON_GPLAY }}
           packageName: com.money.manager.ex.android
-          releaseFiles: app/gplay/release/ammx-*-gplay-release.aab
+          releaseFiles: app/gplay/release.jks/ammx-*-gplay-release.jks.aab
           track: beta
           status: completed

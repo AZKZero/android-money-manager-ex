@@ -31,6 +31,7 @@ https://developer.android.com/training/material/theme.html
         <!--<item name="android:textColorPrimary">@color/material_grey_900</item>-->
         <!--<item name="android:textColorSecondary">@color/material_grey_600</item>-->
         <item name="dividerColor">@color/material_grey_400</item>
+        <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
 
         <item name="android:windowContentOverlay">@null</item>
         <item name="actionModeBackground">@color/md_primary_dark</item>
