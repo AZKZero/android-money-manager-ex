@@ -48,7 +48,7 @@
     <!-- Money Manager Application object  -->
     <color name="abBackground">#80323232</color>
     <!-- Money Manager Widget Background -->
-    <color name="widget_background">#222222</color>
+    <color name="widget_background">#000000</color>
     <!-- Colors used in application  -->
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
@@ -59,22 +59,22 @@
     <color name="red">#FF0000</color>
     <color name="emphasis">#31b6e7</color>
     <!-- Colors row -->
-    <color name="holo_dark_row_light">#FF111111</color>
+    <color name="holo_dark_row_light">#FF000000</color>
     <color name="holo_light_row_light">#F3F4F5</color>
     <!-- Color background and border -->
     <color name="money_border">#CFD2DA</color>
     <color name="holo_light_darkaction_money_background">#EDEEF1</color>
-    <color name="money_background_dark">#373737</color>
+    <color name="money_background_dark">#000000</color>
     <color name="money_background_button">#EEEEEE</color>
     <color name="app_light_darkactionbar_color">#727272</color>
     <!-- AChartEngine Colors -->
     <color name="theme_chart_labels_color">#CCCCCC</color>
 
     <!-- Material Design -->
-    <color name="md_primary">#50C878</color> <!-- Emerald Green -->
-    <color name="md_primary_dark">#3A9656</color>
-    <color name="md_primary_light">#A7F1C0</color>
-    <color name="md_accent">#50C878</color> <!-- Emerald Green for accent -->
+    <color name="md_primary">#00674f</color>
+    <color name="md_primary_dark">#004d3b</color>
+    <color name="md_primary_light">#40927f</color>
+    <color name="md_accent">#00674f</color>
 
     <color name="faint_cyan_background">#F1FEFF</color>
     <color name="emerald_row_light">#E9FAF1</color>
@@ -89,8 +89,8 @@
     <color name="md_green">@color/material_green_700</color>
     <color name="md_indigo">@color/material_indigo_500</color>
 
-    <color name="color_dialog_number_button">#474747</color>
-    <color name="color_dialog_number_operator">#222222</color>
+    <color name="color_dialog_number_button">#000000</color>
+    <color name="color_dialog_number_operator">#000000</color>
 
     <!--<color name="button_foreground_active">@color/md_icons</color>-->
     <color name="button_foreground_inactive">@color/md_secondary_text</color>

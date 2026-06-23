@@ -25,6 +25,7 @@ import android.text.TextUtils;
 import android.widget.TextView;
 
 import android.app.Application;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.PreferenceManager;
 
 import com.amplitude.android.Amplitude;
@@ -141,6 +142,16 @@ public class MmexApplication
         }
 
         initializeDependencyInjection();
+
+        // Theme mode
+        String theme = new AppSettings(this).getGeneralSettings().getTheme();
+        if (Constants.THEME_DARK.equals(theme)) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else if (Constants.THEME_LIGHT.equals(theme)) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+        }
 
         // Job Manager initialization.
         initializeJobManager();

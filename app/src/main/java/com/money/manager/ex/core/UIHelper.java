@@ -21,6 +21,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.util.TypedValue;
 import android.widget.Toast;
 
@@ -157,10 +158,18 @@ public class UIHelper {
      */
     public int getThemeId() {
         try {
-            String darkTheme = Constants.THEME_DARK;
             String currentTheme = appSettingsLazy.get().getGeneralSettings().getTheme();
 
-            if (currentTheme.endsWith(darkTheme)) {
+            if (Constants.THEME_SYSTEM.equals(currentTheme)) {
+                int nightModeFlags = getContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+                if (nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
+                    return R.style.Theme_Money_Manager_Dark;
+                } else {
+                    return R.style.Theme_Money_Manager_Light;
+                }
+            }
+
+            if (Constants.THEME_DARK.equals(currentTheme) || currentTheme.endsWith(Constants.THEME_DARK)) {
                 // Dark theme
                 return R.style.Theme_Money_Manager_Dark;
             } else {

@@ -23,10 +23,12 @@
     <string-array name="themes_names">
         <item>@string/theme_light</item>
         <item>@string/theme_holo</item>
+        <item>@string/theme_system</item>
     </string-array>
     <string-array name="themes_values">
         <item>Material Light</item>
         <item>Material Dark</item>
+        <item>System Default</item>
     </string-array>
     <!-- Define transcode items and values -->
     <string-array name="transcode_values">

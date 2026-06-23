@@ -44,6 +44,7 @@ public class Constants {
     // Themes
     public static final String THEME_LIGHT = "Material Light";
     public static final String THEME_DARK = "Material Dark";
+    public static final String THEME_SYSTEM = "System Default";
 
     public static final String EMAIL = "android@moneymanagerex.org";
     public static final String TIME_FORMAT = "HH:mm";

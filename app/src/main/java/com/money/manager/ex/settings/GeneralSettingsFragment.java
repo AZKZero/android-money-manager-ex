@@ -18,11 +18,13 @@ package com.money.manager.ex.settings;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SwitchPreferenceCompat;
 
+import com.money.manager.ex.Constants;
 import com.money.manager.ex.MmexApplication;
 import com.money.manager.ex.R;
 import com.money.manager.ex.home.MainActivity;
@@ -76,8 +78,17 @@ public class GeneralSettingsFragment
             String summary = settings.getGeneralSettings().getTheme();
             lstTheme.setSummary(summary);
             lstTheme.setOnPreferenceChangeListener((preference, newValue) -> {
-                Timber.d("setting theme: %s", newValue.toString());
-                lstTheme.setSummary(newValue.toString());
+                String theme = newValue.toString();
+                Timber.d("setting theme: %s", theme);
+                lstTheme.setSummary(theme);
+
+                if (Constants.THEME_DARK.equals(theme)) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                } else if (Constants.THEME_LIGHT.equals(theme)) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+                }
 
                 restartActivity();
 

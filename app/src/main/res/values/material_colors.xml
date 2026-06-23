@@ -300,7 +300,7 @@ See https://www.materialui.co/colors
     <color name="material_grey_600" tools:override="true">#757575</color>
     <color name="material_grey_700">#616161</color>
     <color name="material_grey_800" tools:override="true">#424242</color>
-    <color name="material_grey_900" tools:override="true">#212121</color>
+    <color name="material_grey_900" tools:override="true">#000000</color>
     <color name="material_black">#000000</color>
 
     <!-- BLUE GREY -->

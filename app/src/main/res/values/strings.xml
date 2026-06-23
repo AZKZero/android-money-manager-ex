@@ -226,6 +226,7 @@
     <string name="theme_application">Theme</string>
     <string name="theme_holo">Material Dark</string>
     <string name="theme_light">Material Light</string>
+    <string name="theme_system">System Default</string>
 
     <!-- 20120906 -->
     <string name="close_application">Close application</string>
