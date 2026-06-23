@@ -194,6 +194,7 @@ public class MainActivity
     private MyActionBarDrawerToggle mDrawerToggle;
     private TextView mDrawerTextUserName;
     private TextView mDrawerTextTotalAccounts;
+    private TextView mDrawerTextDatabaseName;
     // state dual panel
     private boolean mIsDualPanel = false;
     // sync rotating icon
@@ -1353,6 +1354,15 @@ public class MainActivity
         }
         mDrawerTextUserName = findViewById(R.id.textViewUserName);
         mDrawerTextTotalAccounts = findViewById(R.id.textViewTotalAccounts);
+        mDrawerTextDatabaseName = findViewById(R.id.textViewDatabaseName);
+
+        // Set database name
+        if (mDrawerTextDatabaseName != null) {
+            String dbPath = new AppSettings(this).getDatabaseSettings().getDatabasePath();
+            if (!TextUtils.isEmpty(dbPath)) {
+                mDrawerTextDatabaseName.setText(new File(dbPath).getName());
+            }
+        }
     }
 
     private boolean isDatabaseAvailable() {

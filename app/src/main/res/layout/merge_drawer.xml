@@ -30,42 +30,49 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/md_primary_dark"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/profile_image"
-            android:layout_marginTop="2dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/ic_logo_money_manager_ex"
-            app:civ_border_width="1dp"
-            app:civ_border_color="@color/material_green_50"/>
+        <com.money.manager.ex.view.RobotoTextView
+            android:id="@+id/textViewAppName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:text="@string/app_name"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textColor="@color/material_green_50"
+            app:typeface="roboto_black" />
 
-        <TextView
+        <com.money.manager.ex.view.RobotoTextView
+            android:id="@+id/textViewDatabaseName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:singleLine="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/material_green_50"
+            app:typeface="roboto_regular"
+            tools:text="data.mmb" />
+
+        <com.money.manager.ex.view.RobotoTextView
             android:id="@+id/textViewUserName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:singleLine="true"
-            android:layout_marginTop="2dp"
-            android:layout_marginLeft="16dp"
-            android:fontFamily="sans-serif"
             android:textColor="@color/material_green_50"
-            android:layout_marginStart="16dp" />
+            app:typeface="roboto_regular"
+            tools:text="User Name" />
 
-        <TextView
+        <com.money.manager.ex.view.RobotoTextView
             android:id="@+id/textViewTotalAccounts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:singleLine="true"
             android:layout_marginTop="2dp"
-            android:layout_marginBottom="2dp"
-            android:layout_marginLeft="16dp"
-            android:fontFamily="sans-serif"
+            android:singleLine="true"
             android:textColor="@color/material_green_50"
-            android:layout_marginStart="16dp" />
+            app:typeface="roboto_light"
+            tools:text="Total: $1,000.00" />
     </LinearLayout>
 
     <!-- expandable drawer list -->
