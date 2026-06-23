@@ -41,6 +41,7 @@ import com.money.manager.ex.domainmodel.Category;
 import com.money.manager.ex.servicelayer.InfoService;
 import com.money.manager.ex.utils.MmxDate;
 import com.money.manager.ex.utils.MmxDateTimeUtils;
+import com.money.manager.ex.utils.TransactionColorUtils;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -152,9 +153,8 @@ public class AllDataAdapter
         String status = cursor.getString(cursor.getColumnIndexOrThrow(STATUS));
         holder.txtStatus.setText(TransactionStatus.getStatusAsString(mContext, status));
         // color status
-        int colorBackground = TransactionStatus.getBackgroundColorFromStatus(mContext, status);
-        holder.linDate.setBackgroundColor(colorBackground);
-        holder.txtStatus.setTextColor(Color.GRAY);
+        int statusColor = TransactionStatus.getBackgroundColorFromStatus(mContext, status);
+        holder.txtStatus.setTextColor(statusColor);
 
         // Date
 
@@ -173,6 +173,32 @@ public class AllDataAdapter
 
             String day = dateUtils.format(dateTime, "dd");
             holder.txtDay.setText(day);
+
+            // bind date text background to transaction color
+            int color = cursor.getInt(cursor.getColumnIndexOrThrow(COLOR));
+            int actualColor = Color.TRANSPARENT;
+            if (color != -1) {
+                if (color >= 1 && color <= 7) {
+                    InfoService infoService = new InfoService(context);
+                    actualColor = infoService.getColorNumberFromInfoKey(color);
+                } else {
+                    actualColor = color;
+                }
+            }
+
+            if (actualColor != Color.TRANSPARENT) {
+                holder.linDate.setBackgroundColor(actualColor);
+                int textColor = TransactionColorUtils.isColorDark(actualColor) ? Color.WHITE : Color.BLACK;
+                holder.txtMonth.setTextColor(textColor);
+                holder.txtDay.setTextColor(textColor);
+                holder.txtYear.setTextColor(textColor);
+            } else {
+                // default background
+                holder.linDate.setBackgroundResource(R.color.md_primary);
+                holder.txtMonth.setTextColor(Color.WHITE);
+                holder.txtDay.setTextColor(Color.WHITE);
+                holder.txtYear.setTextColor(Color.WHITE);
+            }
         }
 
         boolean hasAttachment = cursor.getLong(cursor.getColumnIndexOrThrow(ATTACHMENTCOUNT)) > 0;
@@ -209,12 +235,12 @@ public class AllDataAdapter
         // text color amount
         int amountTextColor;
         if (isTransfer) {
-            amountTextColor = ContextCompat.getColor(mContext, R.color.material_blue_700); // gray is not well-visible in dark
+            amountTextColor = ContextCompat.getColor(mContext, R.color.md_primary_dark); // gray is not well-visible in dark
         } else if (isStockLinked) {
             long toAccountId = cursor.getLong(cursor.getColumnIndexOrThrow(TXTOACCOUNTID));
             if (toAccountId != Constants.NOT_SET) {
                 // Transfer-marked stock transaction.
-                amountTextColor = ContextCompat.getColor(mContext, R.color.material_blue_700);
+                amountTextColor = ContextCompat.getColor(mContext, R.color.md_primary_dark);
             } else if (TransactionTypes.valueOf(transactionType).equals(TransactionTypes.Deposit)) {
                 // Non-transfer stock sell.
                 amountTextColor = ContextCompat.getColor(mContext, R.color.material_green_700);
@@ -310,15 +336,8 @@ public class AllDataAdapter
         // Display balance account or days left.
         displayBalanceAmountOrDaysLeft(holder, cursor, context);
 
-        // color
-        int color = cursor.getInt(cursor.getColumnIndexOrThrow(COLOR));
-        if (color > 0 ) {
-            InfoService infoService = new InfoService(context);
-            holder.viewColor.setBackgroundColor(infoService.getColorNumberFromInfoKey(color));
-            holder.viewColor.setVisibility(View.VISIBLE);
-        } else {
-            holder.viewColor.setVisibility(View.GONE);
-        }
+        // hide the old color indicator as it is now part of the date layout
+        holder.viewColor.setVisibility(View.GONE);
     }
 
     public void clearPositionChecked() {

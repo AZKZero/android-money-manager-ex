@@ -25,6 +25,7 @@
         <item name="android:dropDownSpinnerStyle">@style/Money.Spinner.Style</item>
         <item name="spinnerStyle">@style/Money.Spinner.Style</item>
         <item name="editTextStyle">@style/Money.EditText</item>
+        <item name="textInputStyle">@style/Money.TextInputLayout</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="actionModeBackground">@color/md_primary_dark</item>
         <item name="windowNoTitle">true</item>
@@ -62,7 +63,7 @@
         <item name="holo_green_color_theme">@color/holo_green_dark</item>
         <item name="holo_red_color_theme">@color/holo_red_dark</item>
         <item name="row_dark_theme">@android:color/transparent</item>
-        <item name="row_light_theme">@color/sage_row_light</item>
+        <item name="row_light_theme">@color/emerald_row_light</item>
 
         <!-- buttons -->
         <item name="button_background_inactive">@color/button_background_inactive_light</item>
@@ -71,7 +72,7 @@
         <!-- Charts -->
         <item name="chartTextColor">@color/md_primary_text</item>
         <!-- other -->
-        <item name="color_list_header">@color/sage_header_light</item>
+        <item name="color_list_header">@color/emerald_header_light</item>
         <!-- toolbar -->
         <!--<item name="toolbar_spinner_item_text_color">@color/material_grey_900</item>-->
 

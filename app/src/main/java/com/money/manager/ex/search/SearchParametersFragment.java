@@ -264,10 +264,6 @@ public class SearchParametersFragment
         adapterStatus.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinStatus.setAdapter(adapterStatus);
 
-        // Icons
-        UIHelper ui = new UIHelper(getContext());
-        viewHolder.edtNotes.setCompoundDrawablesWithIntrinsicBounds(ui.getIcon(GoogleMaterial.Icon.gmd_content_paste), null, null,null);
-
         // Store search criteria values into the controls.
         displaySearchCriteria(view);
 

@@ -71,14 +71,14 @@
     <color name="theme_chart_labels_color">#CCCCCC</color>
 
     <!-- Material Design -->
-    <color name="md_primary">#8A9A5B</color> <!-- Sage Green -->
-    <color name="md_primary_dark">#5D6A3E</color>
-    <color name="md_primary_light">#B2BD95</color>
-    <color name="md_accent">#0097A7</color> <!-- Cyan 700 for accent -->
+    <color name="md_primary">#50C878</color> <!-- Emerald Green -->
+    <color name="md_primary_dark">#3A9656</color>
+    <color name="md_primary_light">#A7F1C0</color>
+    <color name="md_accent">#50C878</color> <!-- Emerald Green for accent -->
 
     <color name="faint_cyan_background">#F1FEFF</color>
-    <color name="sage_row_light">#E9F9FA</color>
-    <color name="sage_header_light">#DCE7C5</color>
+    <color name="emerald_row_light">#E9FAF1</color>
+    <color name="emerald_header_light">#C8E6C9</color>
     <!--<color name="md_primary_text">@color/material_grey_900</color>-->
 
     <color name="md_primary_text">@color/material_black</color>

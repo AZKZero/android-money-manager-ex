@@ -203,8 +203,11 @@
                 android:maxLines="1" />
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Money.TextInputLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/ic_exposure_plus_1_24dp"
+                app:startIconTint="?attr/colorControlNormal">
 
                 <com.money.manager.ex.view.RobotoEditText
                     android:id="@+id/editTextTransNumber"
@@ -224,14 +227,16 @@
                 android:hint="@string/select_tag" />
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Money.TextInputLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/ic_content_paste_24dp"
+                app:startIconTint="?attr/colorControlNormal">
 
                 <com.money.manager.ex.view.RobotoEditText
                     android:id="@+id/editTextNotes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawablePadding="@dimen/mmx_padding"
                     android:gravity="top|start"
                     android:hint="@string/notes"
                     android:inputType="textMultiLine"
@@ -240,39 +245,26 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Add a section for Color -->
-            <LinearLayout
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Money.TextInputLayout"
                 android:layout_width="match_parent"
-                android:minHeight="@dimen/mmx_avatar_item_height"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <com.mikepenz.iconics.view.IconicsImageView
-                    app:iiv_icon="gmd-format_color_fill"
-                    app:iiv_color="?android:textColorSecondary"
-                    app:iiv_size="@dimen/mmx_icon_size"
-                    android:layout_width="@dimen/mmx_side_icon_size"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/mmx_side_icon_margin"
-                    android:layout_marginEnd="@dimen/mmx_side_icon_margin"
-                    android:layout_gravity="center_vertical"/>
-
-                <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="24dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                app:startIconDrawable="@drawable/ic_format_color_fill_24dp"
+                app:startIconTint="?attr/colorControlNormal">
+                <com.money.manager.ex.view.RobotoEditText
+                    android:id="@+id/colorView"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="top|start"
+                    android:scrollHorizontally="false"
+                    android:textCursorDrawable="@null"
                     android:focusable="false"
-                    android:focusableInTouchMode="false" >
-                    <com.money.manager.ex.view.RobotoEditText
-                        android:id="@+id/colorView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="top|start"
-                        android:scrollHorizontally="false"
-                        android:textCursorDrawable="@null"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        />
-                </com.google.android.material.textfield.TextInputLayout >
-            </LinearLayout>
+                    android:focusableInTouchMode="false"
+                    />
+            </com.google.android.material.textfield.TextInputLayout >
 
         </LinearLayout>
     </ScrollView>
