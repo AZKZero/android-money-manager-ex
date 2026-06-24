@@ -57,7 +57,6 @@ public class SelectDatabaseActivity extends MmxBaseFragmentActivity {
         MmexApplication.getApp().iocComponent.inject(this);
 
         // Initialize views using findViewById()
-        Toolbar mToolbar = findViewById(R.id.toolbar);
         Button createDatabaseButton = findViewById(R.id.createDatabaseButton);
         Button openDatabaseButton = findViewById(R.id.openDatabaseButton);
         Button openCloudDatabaseButton = findViewById(R.id.openCloudDatabaseButton);
@@ -74,8 +73,6 @@ public class SelectDatabaseActivity extends MmxBaseFragmentActivity {
         // Request external storage permissions for Android 6+.
         MmxFileUtils fileUtils = new MmxFileUtils(this);
         fileUtils.requestExternalStoragePermissions(this);
-
-        setSupportActionBar(mToolbar);
 
         // Set up click listeners for buttons
         createDatabaseButton.setOnClickListener(v -> onCreateDatabaseClick());

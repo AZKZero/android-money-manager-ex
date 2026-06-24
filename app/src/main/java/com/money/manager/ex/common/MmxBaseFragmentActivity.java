@@ -25,6 +25,7 @@ import androidx.activity.OnBackPressedCallback;
 import androidx.activity.OnBackPressedDispatcher;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
@@ -34,10 +35,14 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.provider.DocumentsContract;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.graphics.Typeface;
 
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.money.manager.ex.R;
 import com.money.manager.ex.core.Core;
 import com.money.manager.ex.core.UIHelper;
@@ -135,6 +140,12 @@ public abstract class MmxBaseFragmentActivity
 
     }
 
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        syncToolbarCustomViews();
+    }
+
     public boolean onHandleOnBackPressed() {
         if (FRAGMENTTAG != null) {
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(FRAGMENTTAG);
@@ -157,6 +168,14 @@ public abstract class MmxBaseFragmentActivity
         mToolbar = findViewById(R.id.toolbar);
         if (mToolbar != null) {
             setSupportActionBar(mToolbar);
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setDisplayShowTitleEnabled(false);
+            }
+
+            // Set custom title font
+            updateToolbarTitle(getTitle());
+
+            syncToolbarCustomViews();
 
             // Handle system insets for the Toolbar to support Edge-to-Edge on Android 15+
             ViewCompat.setOnApplyWindowInsetsListener(mToolbar, (v, windowInsets) -> {
@@ -329,6 +348,96 @@ public abstract class MmxBaseFragmentActivity
     }
 
     // protected
+
+    @Override
+    public void setTitle(CharSequence title) {
+        super.setTitle(title);
+        updateToolbarTitle(title);
+    }
+
+    @Override
+    public void setTitle(int titleId) {
+        super.setTitle(titleId);
+        updateToolbarTitle(getString(titleId));
+    }
+
+    public void setSubtitle(CharSequence subtitle) {
+        updateToolbarSubtitle(subtitle);
+    }
+
+    public void setSubtitle(int subtitleId) {
+        setSubtitle(getString(subtitleId));
+    }
+
+    private void updateToolbarTitle(CharSequence title) {
+        if (mToolbar == null) return;
+        
+        mToolbar.setTitle("");
+        mToolbar.setSubtitle("");
+
+        TextView toolbarTitle = mToolbar.findViewById(R.id.toolbarTitle);
+        if (toolbarTitle != null) {
+            toolbarTitle.setText(title);
+        }
+
+        syncToolbarCustomViews();
+
+        // Handle CollapsingToolbarLayout
+        if (mToolbar.getParent() instanceof CollapsingToolbarLayout) {
+            CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) mToolbar.getParent();
+            collapsingToolbarLayout.setTitle(title);
+
+            // Apply custom font to CollapsingToolbarLayout
+            if (toolbarTitle != null) {
+                Typeface typeface = toolbarTitle.getTypeface();
+                if (typeface != null) {
+                    collapsingToolbarLayout.setCollapsedTitleTypeface(typeface);
+                    collapsingToolbarLayout.setExpandedTitleTypeface(typeface);
+                }
+            }
+        }
+    }
+
+    public void syncToolbarCustomViews() {
+        if (mToolbar == null || getSupportActionBar() == null) return;
+
+        boolean showTitle = (getSupportActionBar().getDisplayOptions() & ActionBar.DISPLAY_SHOW_TITLE) != 0;
+        boolean hasCustomView = getSupportActionBar().getCustomView() != null && (getSupportActionBar().getDisplayOptions() & ActionBar.DISPLAY_SHOW_CUSTOM) != 0;
+
+        View toolbarTitleLayout = mToolbar.findViewById(R.id.toolbarTitleLayout);
+
+        if (toolbarTitleLayout != null) {
+            // Hide if custom view is present OR if title is disabled
+            if (hasCustomView || !showTitle) {
+                toolbarTitleLayout.setVisibility(View.GONE);
+            } else {
+                // Also check if inside CollapsingToolbarLayout
+                if (!(mToolbar.getParent() instanceof CollapsingToolbarLayout)) {
+                    toolbarTitleLayout.setVisibility(View.VISIBLE);
+                } else {
+                    toolbarTitleLayout.setVisibility(View.GONE);
+                }
+            }
+        }
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
+    }
+
+    private void updateToolbarSubtitle(CharSequence subtitle) {
+        if (mToolbar == null) return;
+        TextView toolbarSubtitle = mToolbar.findViewById(R.id.toolbarSubtitle);
+        if (toolbarSubtitle != null) {
+            if (TextUtils.isEmpty(subtitle)) {
+                toolbarSubtitle.setVisibility(View.GONE);
+            } else {
+                toolbarSubtitle.setText(subtitle);
+                toolbarSubtitle.setVisibility(View.VISIBLE);
+            }
+        }
+        syncToolbarCustomViews();
+    }
 
     protected Toolbar getToolbar() {
         return mToolbar;

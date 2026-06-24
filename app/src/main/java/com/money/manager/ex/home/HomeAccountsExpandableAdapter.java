@@ -127,7 +127,6 @@ public class HomeAccountsExpandableAdapter
             if (investmentGroup) {
                 rowView = inflater.inflate(R.layout.item_account_bills_investment, null);
                 holder.txtAccountName = rowView.findViewById(R.id.textViewItemAccountName);
-                holder.txtAccountName.setTypeface(null, Typeface.BOLD);
                 holder.imgAccountType = rowView.findViewById(R.id.imageViewAccountType);
                 holder.imgCashBalance = rowView.findViewById(R.id.imageViewCashBalance);
                 holder.imgMarketValue = rowView.findViewById(R.id.imageViewMarketValue);
@@ -139,15 +138,11 @@ public class HomeAccountsExpandableAdapter
             } else {
                 rowView = inflater.inflate(R.layout.item_account_bills, null);
                 holder.txtAccountName = rowView.findViewById(R.id.textViewItemAccountName);
-                holder.txtAccountName.setTypeface(null, Typeface.BOLD);
                 holder.imgAccountType = rowView.findViewById(R.id.imageViewAccountType);
                 holder.txtAccountTotal = rowView.findViewById(R.id.textViewItemAccountTotal);
-                holder.txtAccountTotal.setTypeface(null, Typeface.BOLD);
                 holder.txtAccountReconciled = rowView.findViewById(R.id.textViewItemAccountTotalReconciled);
                 if (mHideReconciled) {
                     holder.txtAccountReconciled.setVisibility(View.GONE);
-                } else {
-                    holder.txtAccountReconciled.setTypeface(null, Typeface.BOLD);
                 }
             }
             holder.isInvestmentLayout = investmentGroup;
@@ -180,22 +175,17 @@ public class HomeAccountsExpandableAdapter
                         uiHelper.getIcon(GoogleMaterial.Icon.gmd_trending_up).sizeDp(smallIconSize).color(iconColor));
             }
 
-            holder.txtCashBalance.setTypeface(null, Typeface.BOLD);
             holder.txtCashBalance.setText(mHideBalances ? "****" : mCurrencyService.getBaseCurrencyFormatted(summary.cashBalance));
             if (holder.txtReconciled != null) {
                 if (mHideReconciled) {
                     holder.txtReconciled.setVisibility(View.GONE);
                 } else {
                     holder.txtReconciled.setVisibility(View.VISIBLE);
-                    holder.txtReconciled.setTypeface(null, Typeface.BOLD);
                     holder.txtReconciled.setText(mHideBalances ? "****" : mCurrencyService.getBaseCurrencyFormatted(summary.reconciledCash));
                 }
             }
-            holder.txtMarketValue.setTypeface(null, Typeface.BOLD);
             holder.txtMarketValue.setText(mHideBalances ? "****" : mCurrencyService.getBaseCurrencyFormatted(summary.marketValue));
-            holder.txtInvested.setTypeface(null, Typeface.BOLD);
             holder.txtInvested.setText(mHideBalances ? "****" : mCurrencyService.getBaseCurrencyFormatted(summary.invested));
-            holder.txtGainLoss.setTypeface(null, Typeface.BOLD);
             holder.txtGainLoss.setText(mHideBalances ? "****" : formatGainLoss(summary.gainLoss, summary.invested));
             int gainLossColor = summary.gainLoss.toDouble() < 0
                     ? ContextCompat.getColor(mContext, R.color.red)
@@ -313,7 +303,6 @@ public class HomeAccountsExpandableAdapter
 
             holder = new ViewHolderAccountBills();
             holder.txtAccountName = rowView.findViewById(R.id.textViewItemAccountName);
-            holder.txtAccountName.setTypeface(null, Typeface.NORMAL);
 
             if (investmentAccount) {
                 holder.imgAccountType = rowView.findViewById(R.id.imageViewAccountType);
@@ -329,7 +318,6 @@ public class HomeAccountsExpandableAdapter
                 holder.imgAccountType = rowView.findViewById(R.id.imageViewAccountType);
                 holder.txtAccountTotal = rowView.findViewById(R.id.textViewItemAccountTotal);
                 holder.txtAccountReconciled = rowView.findViewById(R.id.textViewItemAccountTotalReconciled);
-                holder.txtAccountTotal.setTypeface(null, Typeface.NORMAL);
                 holder.imgAccountType.setVisibility(View.INVISIBLE);
             }
 
@@ -345,9 +333,6 @@ public class HomeAccountsExpandableAdapter
         holder.txtAccountName.setText(account.getAccountName());
         if (investmentAccount) {
             InvestmentSummary summary = getInvestmentSummary(account);
-            if (holder.txtAccountName != null) {
-                holder.txtAccountName.setTypeface(null, Typeface.NORMAL);
-            }
 
             UIHelper uiHelper = new UIHelper(getContext());
             int smallIconSize = 14;
@@ -363,7 +348,6 @@ public class HomeAccountsExpandableAdapter
             }
 
             if (holder.txtCashBalance != null) {
-                holder.txtCashBalance.setTypeface(null, Typeface.NORMAL);
                 holder.txtCashBalance.setText(mHideBalances ? "****" : mCurrencyService.getBaseCurrencyFormatted(summary.cashBalance));
             }
             if (holder.txtReconciled != null) {
@@ -375,15 +359,12 @@ public class HomeAccountsExpandableAdapter
                 }
             }
             if (holder.txtMarketValue != null) {
-                holder.txtMarketValue.setTypeface(null, Typeface.NORMAL);
                 holder.txtMarketValue.setText(mHideBalances ? "****" : mCurrencyService.getBaseCurrencyFormatted(summary.marketValue));
             }
             if (holder.txtInvested != null) {
-                holder.txtInvested.setTypeface(null, Typeface.NORMAL);
                 holder.txtInvested.setText(mHideBalances ? "****" : mCurrencyService.getBaseCurrencyFormatted(summary.invested));
             }
             if (holder.txtGainLoss != null) {
-                holder.txtGainLoss.setTypeface(null, Typeface.NORMAL);
                 holder.txtGainLoss.setText(mHideBalances ? "****" : formatGainLoss(summary.gainLoss, summary.invested));
                 int gainLossColor = summary.gainLoss.toDouble() < 0
                         ? ContextCompat.getColor(mContext, R.color.red)

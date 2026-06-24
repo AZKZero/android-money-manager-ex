@@ -25,5 +25,13 @@
     android:background="?attr/colorPrimary"
     app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
+    <com.money.manager.ex.view.RobotoTextView
+        android:id="@+id/toolbarTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+        app:typeface="roboto_medium"
+        android:singleLine="true" />
+
     <include layout="@layout/actionbar_button_cancel_search"/>
 </androidx.appcompat.widget.Toolbar>

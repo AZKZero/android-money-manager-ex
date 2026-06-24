@@ -221,9 +221,6 @@ public class MainActivity
         // Layout
         setContentView(R.layout.main_activity);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        if (toolbar != null) setSupportActionBar(toolbar);
-
         LinearLayout fragmentDetail = findViewById(R.id.fragmentDetail);
         setDualPanel(fragmentDetail != null && fragmentDetail.getVisibility() == View.VISIBLE);
 
@@ -1323,7 +1320,7 @@ public class MainActivity
 
         // enable ActionBar app icon to behave as action to toggle nav drawer
         setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
     private void initHomeFragment() {

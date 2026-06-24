@@ -235,12 +235,12 @@ public class AllDataAdapter
         // text color amount
         int amountTextColor;
         if (isTransfer) {
-            amountTextColor = ContextCompat.getColor(mContext, R.color.md_primary_dark); // gray is not well-visible in dark
+            amountTextColor = ContextCompat.getColor(mContext, R.color.material_blue_700);
         } else if (isStockLinked) {
             long toAccountId = cursor.getLong(cursor.getColumnIndexOrThrow(TXTOACCOUNTID));
             if (toAccountId != Constants.NOT_SET) {
                 // Transfer-marked stock transaction.
-                amountTextColor = ContextCompat.getColor(mContext, R.color.md_primary_dark);
+                amountTextColor = ContextCompat.getColor(mContext, R.color.material_blue_700);
             } else if (TransactionTypes.valueOf(transactionType).equals(TransactionTypes.Deposit)) {
                 // Non-transfer stock sell.
                 amountTextColor = ContextCompat.getColor(mContext, R.color.material_green_700);

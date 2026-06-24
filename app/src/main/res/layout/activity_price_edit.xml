@@ -68,7 +68,17 @@
                 android:background="?attr/colorPrimary"
                 app:popupTheme="?attr/toolbarAppPopupTheme"
                 app:layout_collapseMode="pin"
-                app:layout_scrollFlags="scroll|enterAlways" />
+                app:layout_scrollFlags="scroll|enterAlways">
+
+                <com.money.manager.ex.view.RobotoTextView
+                    android:id="@+id/toolbarTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                    app:typeface="roboto_medium"
+                    android:singleLine="true" />
+
+            </androidx.appcompat.widget.Toolbar>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>

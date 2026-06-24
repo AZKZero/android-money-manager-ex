@@ -26,4 +26,30 @@
     android:elevation="@dimen/mmx_toolbar_elevation"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     app:popupTheme="?attr/toolbarAppPopupTheme"
-    app:layout_scrollFlags="scroll|enterAlways"/>
+    app:layout_scrollFlags="scroll|enterAlways"
+    app:title="">
+
+    <LinearLayout
+        android:id="@+id/toolbarTitleLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.money.manager.ex.view.RobotoTextView
+            android:id="@+id/toolbarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:singleLine="true" />
+
+        <com.money.manager.ex.view.RobotoTextView
+            android:id="@+id/toolbarSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle"
+            android:visibility="gone"
+            android:singleLine="true" />
+
+    </LinearLayout>
+
+</androidx.appcompat.widget.Toolbar>

@@ -449,13 +449,21 @@ public class HomeFragment
             AppCompatActivity activity = (AppCompatActivity) getActivity();
 
             // show title
-            Objects.requireNonNull(activity.getSupportActionBar()).setDisplayShowTitleEnabled(true);
+            Objects.requireNonNull(activity.getSupportActionBar()).setDisplayShowTitleEnabled(false);
 
             String dbPath = new AppSettings(activity).getDatabaseSettings().getDatabasePath();
             if (dbPath != null && !dbPath.isEmpty()) {
-                activity.getSupportActionBar().setSubtitle(Paths.get(dbPath).getFileName().toString());
+                if (activity instanceof MmxBaseFragmentActivity) {
+                    ((MmxBaseFragmentActivity) activity).setSubtitle(Paths.get(dbPath).getFileName().toString());
+                } else {
+                    activity.getSupportActionBar().setSubtitle(Paths.get(dbPath).getFileName().toString());
+                }
             } else {
-                activity.getSupportActionBar().setSubtitle(R.string.path_database_not_exists);
+                if (activity instanceof MmxBaseFragmentActivity) {
+                    ((MmxBaseFragmentActivity) activity).setSubtitle(getString(R.string.path_database_not_exists));
+                } else {
+                    activity.getSupportActionBar().setSubtitle(R.string.path_database_not_exists);
+                }
             }
         }
 

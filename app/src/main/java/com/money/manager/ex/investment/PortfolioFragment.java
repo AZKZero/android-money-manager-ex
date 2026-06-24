@@ -37,6 +37,7 @@ import android.widget.Toast;
 import com.money.manager.ex.Constants;
 import com.money.manager.ex.R;
 import com.money.manager.ex.common.BaseRecyclerFragment;
+import com.money.manager.ex.common.MmxBaseFragmentActivity;
 import com.money.manager.ex.core.ContextMenuIds;
 import com.money.manager.ex.core.MenuHelper;
 import com.money.manager.ex.core.UIHelper;
@@ -369,8 +370,12 @@ public class PortfolioFragment extends BaseRecyclerFragment {
         if (!(getActivity() instanceof AppCompatActivity)) return;
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         if (activity.getSupportActionBar() == null) return;
-        activity.getSupportActionBar().setDisplayShowTitleEnabled(true);
-        activity.getSupportActionBar().setSubtitle(getSubTitle());
+        activity.getSupportActionBar().setDisplayShowTitleEnabled(false);
+        if (activity instanceof MmxBaseFragmentActivity) {
+            ((MmxBaseFragmentActivity) activity).setSubtitle(getSubTitle());
+        } else {
+            activity.getSupportActionBar().setSubtitle(getSubTitle());
+        }
     }
 
     private void openEditInvestmentActivity(Long stockId) {

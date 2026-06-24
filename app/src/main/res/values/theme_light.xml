@@ -20,6 +20,7 @@
 
     <!-- base for the base of the light theme. -->
     <style name="_App_Light_DarkActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="viewInflaterClass">com.money.manager.ex.view.MmxViewInflater</item>
         <!--<item name="android:icon">@color/md_icons</item>-->
         <!--<item name="android:divider">@color/md_divider</item>-->
         <item name="android:dropDownSpinnerStyle">@style/Money.Spinner.Style</item>

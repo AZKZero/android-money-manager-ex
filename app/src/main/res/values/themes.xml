@@ -20,6 +20,7 @@
     <!-- theme used for decor view (the initial screen simulating a splash screen) -->
     <!-- It is assigned to the application in the manifest, application block. -->
     <style name="Theme.Splash" parent="Theme.MaterialComponents">
+        <item name="viewInflaterClass">com.money.manager.ex.view.MmxViewInflater</item>
         <item name="android:windowBackground">@drawable/background_logo</item>
         <item name="windowNoTitle">true</item>
         <!-- Opt-out Edge-to-Edge in Android 15 / SDK 35+ -->
