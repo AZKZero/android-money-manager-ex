@@ -36,11 +36,15 @@ import androidx.fragment.app.FragmentManager;
 
 import android.provider.DocumentsContract;
 import android.text.TextUtils;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.graphics.Typeface;
+import android.graphics.Color;
+
+import androidx.annotation.NonNull;
 
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.money.manager.ex.R;
@@ -91,6 +95,14 @@ public abstract class MmxBaseFragmentActivity
         this.compositeSubscription = new CompositeSubscription();
 
         super.onCreate(savedInstanceState);
+
+        getSupportFragmentManager().registerFragmentLifecycleCallbacks(new FragmentManager.FragmentLifecycleCallbacks() {
+            @Override
+            public void onFragmentResumed(@NonNull FragmentManager fm, @NonNull Fragment f) {
+                super.onFragmentResumed(fm, f);
+                syncToolbarCustomViews();
+            }
+        }, true);
 
         // Initialize the ActivityResultLauncher
         openDocumentLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
@@ -206,6 +218,12 @@ public abstract class MmxBaseFragmentActivity
                 });
             }
         }
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        syncToolbarCustomViews();
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
@@ -351,14 +369,15 @@ public abstract class MmxBaseFragmentActivity
 
     @Override
     public void setTitle(CharSequence title) {
-        super.setTitle(title);
+        // We don't call super.setTitle because it would set the title on the Toolbar
+        // via the ActionBar wrapper, causing duplication.
+        // Instead, we just update our custom title view.
         updateToolbarTitle(title);
     }
 
     @Override
     public void setTitle(int titleId) {
-        super.setTitle(titleId);
-        updateToolbarTitle(getString(titleId));
+        setTitle(getString(titleId));
     }
 
     public void setSubtitle(CharSequence subtitle) {
@@ -401,14 +420,19 @@ public abstract class MmxBaseFragmentActivity
     public void syncToolbarCustomViews() {
         if (mToolbar == null || getSupportActionBar() == null) return;
 
-        boolean showTitle = (getSupportActionBar().getDisplayOptions() & ActionBar.DISPLAY_SHOW_TITLE) != 0;
+        // Force hide standard title/subtitle widgets inside Toolbar
+        mToolbar.setTitle("");
+        mToolbar.setSubtitle("");
+        mToolbar.setTitleTextColor(Color.TRANSPARENT);
+        mToolbar.setSubtitleTextColor(Color.TRANSPARENT);
+
         boolean hasCustomView = getSupportActionBar().getCustomView() != null && (getSupportActionBar().getDisplayOptions() & ActionBar.DISPLAY_SHOW_CUSTOM) != 0;
 
         View toolbarTitleLayout = mToolbar.findViewById(R.id.toolbarTitleLayout);
 
         if (toolbarTitleLayout != null) {
-            // Hide if custom view is present OR if title is disabled
-            if (hasCustomView || !showTitle) {
+            // Hide if custom view is present
+            if (hasCustomView) {
                 toolbarTitleLayout.setVisibility(View.GONE);
             } else {
                 // Also check if inside CollapsingToolbarLayout
@@ -418,10 +442,6 @@ public abstract class MmxBaseFragmentActivity
                     toolbarTitleLayout.setVisibility(View.GONE);
                 }
             }
-        }
-
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
     }
 

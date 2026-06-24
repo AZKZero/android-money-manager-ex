@@ -449,7 +449,7 @@ public class HomeFragment
             AppCompatActivity activity = (AppCompatActivity) getActivity();
 
             // show title
-            Objects.requireNonNull(activity.getSupportActionBar()).setDisplayShowTitleEnabled(false);
+            // Objects.requireNonNull(activity.getSupportActionBar()).setDisplayShowTitleEnabled(false);
 
             String dbPath = new AppSettings(activity).getDatabaseSettings().getDatabasePath();
             if (dbPath != null && !dbPath.isEmpty()) {

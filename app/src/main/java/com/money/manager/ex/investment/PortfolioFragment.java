@@ -370,7 +370,7 @@ public class PortfolioFragment extends BaseRecyclerFragment {
         if (!(getActivity() instanceof AppCompatActivity)) return;
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         if (activity.getSupportActionBar() == null) return;
-        activity.getSupportActionBar().setDisplayShowTitleEnabled(false);
+        // activity.getSupportActionBar().setDisplayShowTitleEnabled(false);
         if (activity instanceof MmxBaseFragmentActivity) {
             ((MmxBaseFragmentActivity) activity).setSubtitle(getSubTitle());
         } else {

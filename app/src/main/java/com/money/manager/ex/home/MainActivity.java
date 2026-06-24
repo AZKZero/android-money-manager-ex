@@ -1320,7 +1320,7 @@ public class MainActivity
 
         // enable ActionBar app icon to behave as action to toggle nav drawer
         setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        // getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
     private void initHomeFragment() {
